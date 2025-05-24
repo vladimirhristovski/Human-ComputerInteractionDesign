@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="row bg-danger justify-content-center text-light">
+        <div class="col p-5">
+            <h1>Explore the wonderland of tastes!</h1>
+            <p>Assignment for HCI Exam in January 2025</p>
+            <button class="btn btn-light">Get Started</button>
+            <button class="btn btn-outline-light ms-3">Learn More</button>
+        </div>
+        <div class="col">
+            <img src="{% static 'c.png' %}" style="width: 450px; height: 300px" alt="cake">
+        </div>
+    </div>
+    <div class="row justify-content-center bg-secondary-subtle">
+        <p class="w-75 text-center mx-5 d-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur
+            corporis
+            doloribus facere laudantium provident repudiandae sint temporibus! Assumenda error et, incidunt maxime nobis
+            obcaecati.</p>
+        <div class="mx-5 d-flex justify-content-center align-items-center">
+            <img src="{% static 'b.png' %}" style="width: 50px; height: 30px" alt="baker">
+            <p class="fw-bold text-center">John Doe / CEO, Cakery&Bakery</p>
+        </div>
+    </div>
+    <div class="row">
+        <p class="text-center fw-bold text-danger">Products</p>
+        <p class="text-center text-secondary">Add more products in the edit form!</p>
+    </div>
+    <div class="row">
+        {% for cake in cakes %}
+            <div class="col-4">
+                <div class="card">
+                    <img src="{{ cake.image.url }}" class="card-img-top" alt="cake-image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ cake.name }}</h5>
+                        <p class="card-text">{{ cake.description }}</p>
+                        <div class="d-flex justify-content-center align-items-center ">
+                            <img src="{{ cake.baker.image.url }}" style="width: 50px; height: 30px" alt="baker-img">
+                            <p class="fw-bold text-center">{{ cake.baker }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
