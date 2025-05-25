@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row align-items-center">
+        <div class="col-6 text-center">
+            <h1 class="fw-bold">Architecture</h1>
+            <h1 class="text-secondary fw-bold">Bureau</h1>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <img src="{% static 'stone1 (1).jpg' %}" alt="house img">
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <img src="{% static 'house4.jpg' %}" alt="house img">
+        </div>
+        <div class="col-6 text-center">
+            <p class="text-secondary">Lorem ipsum dolor</p>
+        </div>
+        <div class="col-12 text-center py-5">
+            <h1 class="fw-bold">We offer variety of projects</h1>
+        </div>
+        <div class="col-12 hstack gap-5 justify-content-center">
+            <div class="p-5 fw-bold">All houses
+                <hr class="bg-black opacity-100"/>
+            </div>
+            <div class="p-5 fw-bold text-secondary">Stone houses
+                <hr/>
+            </div>
+            <div class="p-5 fw-bold text-secondary">Frame houses
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-center">
+    {% for entry in context %}
+        <div class="col-4 align-items-center justify-content-center d-flex pb-5">
+        <div class="card bg-secondary-subtle" style="width: 18rem;">
+            <img src="{{ entry.estate.image.url }}" class="card-img-top" alt="estate img">
+            <div class="card-body">
+                <h5 class="card-title">{{ entry.estate.name }}</h5>
+                <p class="card-text">Area {{ entry.estate.area }}m2</p>
+                <p class="card-text">Price {{ entry.price }}$</p>
+                <a href="{% url 'edit' entry.estate.id %}" class="btn bg-black text-white">Edit</a>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}
